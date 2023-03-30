@@ -57,13 +57,14 @@ end
 local function callbackResponse(success, result, ...)
 	if not success then
 		if result then
-			return print(('^1SCRIPT ERROR: %s^0\n%s'):format(result , Citizen.InvokeNative(`FORMAT_STACK_TRACE` & 0xFFFFFFFF, nil, 0, Citizen.ResultAsString()) or ''))
+			print(('^1SCRIPT ERROR: %s^0\n%s'):format(result , Citizen.InvokeNative(`FORMAT_STACK_TRACE` & 0xFFFFFFFF, nil, 0, Citizen.ResultAsString()) or ''))
+			-- return
 		end
 
-		return false
+		-- return false
 	end
 
-	return result, ...
+	return success, result, ...
 end
 
 local pcall = pcall
